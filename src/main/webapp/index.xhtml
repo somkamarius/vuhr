@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Welcome to VU HR</h2>
+    <div>
+        <h:form id="student-form">
+            <h4>Add student</h4>
+            <h:panelGrid>
+                <h:outputLabel for="name">Student name</h:outputLabel>
+                <h:inputText id="name" value="${studentController.student.name}"/>
+
+                <h:outputLabel for="surname">Student surname</h:outputLabel>
+                <h:inputText id="surname" value="${studentController.student.surname}"/>
+
+
+                <!--                <h:outputLabel for="quantity">Item quantity</h:outputLabel>-->
+<!--                <h:inputText id="quantity" value="${itemController.item.quantity}"-->
+<!--                             converterMessage="Please enter digits only."/>-->
+
+<!--                <h:outputLabel for="price">Item price</h:outputLabel>-->
+<!--                <h:inputText id="price" value="${itemController.item.price}"-->
+<!--                             converterMessage="Please enter digits only."/>-->
+
+<!--                <h:outputLabel for="category">Item category</h:outputLabel>-->
+<!--                <h:selectOneMenu id="category" value="#{itemController.categoryId}">-->
+<!--                    <f:selectItems value="#{categoryController.availableCategories}" var="c"-->
+<!--                                   itemLabel="#{c.name}" itemValue="#{c.id}"/>-->
+<!--                </h:selectOneMenu>-->
+
+<!--                <h:selectManyListbox id="shops" value="#{itemController.shopIds}">-->
+<!--                    <f:selectItems value="#{shopController.allShops}" var="s"-->
+<!--                                   itemLabel="#{s.name}" itemValue="#{s.id}"/>-->
+<!--                </h:selectManyListbox>-->
+                <h:commandButton id="submit-button" value="Submit" action="#{studentController.createStudent}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+</h:body>
+</html>
