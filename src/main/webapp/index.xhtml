@@ -7,6 +7,106 @@
 <h:head/>
 <h:body>
     <h2>Welcome to VU HR</h2>
+
+    <div>
+        <h3>Available specialities</h3>
+        <ol>
+            <ui:repeat value="#{specialityController.allSpecialities}" var="item">
+                <li>
+                    <h:outputLabel>ID: </h:outputLabel>
+                    <h:outputLabel value="${item.id}"/>
+                    <h:outputLabel> Name: </h:outputLabel>
+                    <h:outputLabel value="${item.name}"/>
+                    <h:outputLabel> Length: </h:outputLabel>
+                    <h:outputLabel value="${item.length}"/>
+                    <h:outputLabel> Students: </h:outputLabel>
+                    <ui:repeat value="${item.students}" var="item">
+                        <h:outputLabel value="${item.name} "/>
+                    </ui:repeat>
+                </li>
+            </ui:repeat>
+        </ol>
+    </div>
+
+    <div>
+        <h3>Available subjects</h3>
+        <ol>
+            <ui:repeat value="#{subjectController.availableSubjects}" var="item">
+                <li>
+                    <h:outputLabel>ID: </h:outputLabel>
+                    <h:outputLabel value="${item.id}"/>
+                    <h:outputLabel> Name: </h:outputLabel>
+                    <h:outputLabel value="${item.name}"/>
+                    <h:outputLabel> Description: </h:outputLabel>
+                    <h:outputLabel value="${item.description}"/>
+                    <h:outputLabel> Lecturer: </h:outputLabel>
+                    <h:outputLabel value="${item.lecturer}"/>
+                    <h:outputLabel> Credit amount: </h:outputLabel>
+                    <h:outputLabel value="${item.creditAmount}"/>
+                    <h:outputLabel> Students: </h:outputLabel>
+                    <ui:repeat value="${item.students}" var="item">
+                        <h:outputLabel value="${item.name} "/>
+                    </ui:repeat>
+                </li>
+            </ui:repeat>
+        </ol>
+    </div>
+
+    <div>
+        <h3>Available students</h3>
+        <ol>
+            <ui:repeat value="#{studentController.students}" var="item">
+                <li>
+                    <h:outputLabel>ID: </h:outputLabel>
+                    <h:outputLabel value="${item.id}"/>
+                    <h:outputLabel> Name: </h:outputLabel>
+                    <h:outputLabel value="${item.name}"/>
+                    <h:outputLabel> Surname: </h:outputLabel>
+                    <h:outputLabel value="${item.surname}"/>
+                    <h:outputLabel> Email: </h:outputLabel>
+                    <h:outputLabel value="${item.email}"/>
+                    <h:outputLabel> Year: </h:outputLabel>
+                    <h:outputLabel value="${item.year}"/>
+                    <h:outputLabel> Student group: </h:outputLabel>
+                    <h:outputLabel value="${item.studentGroup}"/>
+                </li>
+            </ui:repeat>
+        </ol>
+    </div>
+
+
+    <div>
+        <h:form id="speciality-form">
+            <h4>Add speciality</h4>
+            <h:panelGrid>
+                <h:outputLabel for="speciality_name">Speciality name</h:outputLabel>
+                <h:inputText id="speciality_name" value="${specialityController.speciality.name}"/>
+                <h:outputLabel for="speciality_length">Speciality length</h:outputLabel>
+                <h:inputText id="speciality_length" value="${specialityController.speciality.length}"
+                             converterMessage="Please enter digits only."/>
+                <h:commandButton id="add-speciality-button" value="Add" action="#{specialityController.createNewSpeciality()}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+
+    <div>
+        <h:form id="subject-form">
+            <h4>Add subject</h4>
+            <h:panelGrid>
+                <h:outputLabel for="subject-name">Subject name</h:outputLabel>
+                <h:inputText id="subject-name" value="${subjectController.subject.name}"/>
+                <h:outputLabel for="subject-description">Subject description</h:outputLabel>
+                <h:inputText id="subject-description" value="${subjectController.subject.description}"/>
+                <h:outputLabel for="subject-lecturer">Subject lecturer</h:outputLabel>
+                <h:inputText id="subject-lecturer" value="${subjectController.subject.lecturer}"/>
+                <h:outputLabel for="subject_length">Subject credit amount</h:outputLabel>
+                <h:inputText id="subject_length" value="${subjectController.subject.creditAmount}"
+                             converterMessage="Please enter digits only."/>
+                <h:commandButton id="add-subject-button" value="Add" action="#{subjectController.createNewSubject()}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+
     <div>
         <h:form id="student-form">
             <h4>Add student</h4>
@@ -17,25 +117,33 @@
                 <h:outputLabel for="surname">Student surname</h:outputLabel>
                 <h:inputText id="surname" value="${studentController.student.surname}"/>
 
+                <h:outputLabel for="email">Student email</h:outputLabel>
+                <h:inputText id="email" value="${studentController.student.email}"/>
 
-                <!--                <h:outputLabel for="quantity">Item quantity</h:outputLabel>-->
-<!--                <h:inputText id="quantity" value="${itemController.item.quantity}"-->
-<!--                             converterMessage="Please enter digits only."/>-->
+                <h:outputLabel for="student-year">Student year</h:outputLabel>
+                <h:inputText id="student-year" value="${studentController.student.year}"
+                             converterMessage="Please enter digits only."/>
+
+                <h:outputLabel for="student-group">Student group</h:outputLabel>
+                <h:inputText id="student-group" value="${studentController.student.studentGroup}"
+                             converterMessage="Please enter digits only."/>
 
 <!--                <h:outputLabel for="price">Item price</h:outputLabel>-->
 <!--                <h:inputText id="price" value="${itemController.item.price}"-->
 <!--                             converterMessage="Please enter digits only."/>-->
 
-<!--                <h:outputLabel for="category">Item category</h:outputLabel>-->
-<!--                <h:selectOneMenu id="category" value="#{itemController.categoryId}">-->
-<!--                    <f:selectItems value="#{categoryController.availableCategories}" var="c"-->
-<!--                                   itemLabel="#{c.name}" itemValue="#{c.id}"/>-->
-<!--                </h:selectOneMenu>-->
+                <h:outputLabel for="speciality">Student speciality</h:outputLabel>
+                <h:selectOneMenu id="speciality" value="#{studentController.specialityId}">
+                    <f:selectItems value="#{specialityController.allSpecialities}" var="c"
+                                   itemLabel="#{c.name}" itemValue="#{c.id}"/>
+                </h:selectOneMenu>
 
-<!--                <h:selectManyListbox id="shops" value="#{itemController.shopIds}">-->
-<!--                    <f:selectItems value="#{shopController.allShops}" var="s"-->
-<!--                                   itemLabel="#{s.name}" itemValue="#{s.id}"/>-->
-<!--                </h:selectManyListbox>-->
+                <h:outputLabel for="subjects">Student subjects</h:outputLabel>
+                <h:selectManyListbox id="subjects" value="#{studentController.subjectIds}">
+                    <f:selectItems value="#{subjectController.availableSubjects}" var="s"
+                                   itemLabel="#{s.name}" itemValue="#{s.id}"/>
+                </h:selectManyListbox>
+
                 <h:commandButton id="submit-button" value="Submit" action="#{studentController.createStudent}"/>
             </h:panelGrid>
         </h:form>

@@ -13,12 +13,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
+@NamedQueries({
+        @NamedQuery(name = "Student.findAll", query = "select i from Student as i"),
+//        @NamedQuery(name = "Speciality.findById", query = "select i from Speciality as i where i.id = :id"),
+})
 public class Student {
 
     public Student(String name, String surname) {

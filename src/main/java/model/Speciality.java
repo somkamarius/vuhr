@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -16,6 +18,10 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+@NamedQueries({
+        @NamedQuery(name = "Speciality.findAll", query = "select i from Speciality as i"),
+        @NamedQuery(name = "Speciality.findById", query = "select i from Speciality as i where i.id = :id"),
+})
 public class Speciality {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
