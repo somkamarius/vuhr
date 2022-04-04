@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Welcome to VUHR</h2>
+    <h:link outcome="/index" value="Go back to ORM/JPA implementation"/>
+    <div>
+        <h3>Available subjects</h3>
+        <ol>
+            <ui:repeat value="#{myBatisSubjectController.availableSubjects}" var="item">
+                <li>
+                    <h:outputLabel>ID: </h:outputLabel>
+                    <h:outputLabel value="${item.id}"/>
+                    <h:outputLabel> Name: </h:outputLabel>
+                    <h:outputLabel value="${item.name}"/>
+                    <h:outputLabel> Description: </h:outputLabel>
+                    <h:outputLabel value="${item.description}"/>
+                    <h:outputLabel> Lecturer: </h:outputLabel>
+                    <h:outputLabel value="${item.lecturer}"/>
+                    <h:outputLabel> Credit amount: </h:outputLabel>
+                    <h:outputLabel value="${item.creditAmount}"/>
+                </li>
+            </ui:repeat>
+        </ol>
+    </div>
+
+    <div>
+        <h4>Add subject</h4>
+        <h:form id="subject-form">
+            <h:panelGrid>
+                <h:outputLabel for="subject_name">Subject name</h:outputLabel>
+                <h:inputText id="subject_name" value="${myBatisSubjectController.subjectToAdd.name}"/>
+                <h:outputLabel for="subject_credit_amount">Subject credit amount</h:outputLabel>
+                <h:inputText id="subject_credit_amount" value="${myBatisSubjectController.subjectToAdd.creditAmount}"
+                             converterMessage="Please enter digits only."/>
+                <h:outputLabel for="subject_description">Subject description</h:outputLabel>
+                <h:inputText id="subject_description" value="${myBatisSubjectController.subjectToAdd.description}"/>
+                <h:outputLabel for="subject_lecturer">Subject lecturer</h:outputLabel>
+                <h:inputText id="subject_lecturer" value="${myBatisSubjectController.subjectToAdd.lecturer}"/>
+                <h:commandButton id="add-button" value="Add" action="#{myBatisSubjectController.addNewSubject}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+
+
+    <div>
+        <h4>Update subject</h4>
+        <h:form id="subject-update-form">
+            <h:panelGrid>
+                <h:outputLabel for="id">Subject id</h:outputLabel>
+                <h:inputText id="id" value="${myBatisSubjectController.subjectToEdit.id}"/>
+                <h:outputLabel for="name">Subject name</h:outputLabel>
+                <h:inputText id="name" value="${myBatisSubjectController.subjectToEdit.name}"/>
+                <h:outputLabel for="creditAmount">Subject credit amount</h:outputLabel>
+                <h:inputText id="creditAmount" value="${myBatisSubjectController.subjectToEdit.creditAmount}"
+                             converterMessage="Please enter digits only."/>
+                <h:outputLabel for="description">Subject description</h:outputLabel>
+                <h:inputText id="description" value="${myBatisSubjectController.subjectToEdit.description}"/>
+                <h:outputLabel for="lecturer">Subject lecturer</h:outputLabel>
+                <h:inputText id="lecturer" value="${myBatisSubjectController.subjectToEdit.lecturer}"/>
+                <h:commandButton id="update-button" value="update" action="#{myBatisSubjectController.updateSubject}"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
+
+</h:body>
+</html>
