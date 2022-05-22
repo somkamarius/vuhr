@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,9 @@ public class Subject {
     private String lecturer;
     @Column(name = "CREDIT_AMOUNT", nullable = false)
     private int creditAmount;
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 
     @ManyToMany(mappedBy = "subjects")
     @Column(name = "STUDENT_ID")

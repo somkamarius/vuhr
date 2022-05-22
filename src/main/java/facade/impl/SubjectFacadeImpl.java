@@ -27,7 +27,7 @@ public class SubjectFacadeImpl {
         return namedQuery.getSingleResult();
     }
 
-    public void updateCategory(Subject categoryToEdit) {
-        this.entityManager.merge(categoryToEdit);
+    public void updateSubject(Subject subjectToEdit) {
+        this.entityManager.merge(subjectToEdit);
     }
 }

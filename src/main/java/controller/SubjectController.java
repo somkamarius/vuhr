@@ -40,7 +40,7 @@ public class SubjectController implements Serializable {
 
     @Transactional
     public String updateSubject() {
-        subjectFacade.updateCategory(subjectToEdit);
+        subjectFacade.updateSubject(subjectToEdit);
         return "index?faces-redirect=true";
     }
 

@@ -37,4 +37,20 @@ public class StudentController implements Serializable {
     public List<Student> getStudents() {
         return studentFacade.getAllStudents();
     }
+
+    public String changeEmail(String email) {
+        if(email == null || email.length() == 0){
+            return null;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(email.charAt(0));
+        for(int i = 1; i < email.length(); i++){
+            stringBuilder.append('*');
+            if(email.charAt(i) == '@'){
+                stringBuilder.append(email.substring(i));
+                break;
+            }
+        };
+        return stringBuilder.toString();
+    }
 }

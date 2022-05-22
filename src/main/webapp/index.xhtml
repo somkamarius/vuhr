@@ -8,6 +8,12 @@
 <h:body>
     <h2>Welcome to VU HR</h2>
     <h:link outcome="myBatis/vuhr" value="Go to myBatis implementation"/>
+    <h:link outcome="subjects" value="Subjects"/>
+
+    <h:form>
+        <h:outputText value="#{generateEmail.emailGenerationStatus}" />
+        <h:commandButton value="Generate email address?" disabled="#{generateEmail.emailGenerationRunning}" action="#{generateEmail.generateEmail()}" />
+    </h:form>
     <div>
         <h3>Available specialities</h3>
         <ol>
@@ -64,7 +70,7 @@
                     <h:outputLabel> Surname: </h:outputLabel>
                     <h:outputLabel value="${item.surname}"/>
                     <h:outputLabel> Email: </h:outputLabel>
-                    <h:outputLabel value="${item.email}"/>
+                    <h:outputLabel value="${studentController.changeEmail(item.email)}"/>
                     <h:outputLabel> Year: </h:outputLabel>
                     <h:outputLabel value="${item.year}"/>
                     <h:outputLabel> Student group: </h:outputLabel>
