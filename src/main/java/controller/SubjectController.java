@@ -1,5 +1,6 @@
 package controller;
 
+import facade.impl.AltSubjectFacadeImpl;
 import facade.impl.SubjectFacadeImpl;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,7 @@ public class SubjectController implements Serializable {
     private static final long serialVersionUID = 7494079547177391842L;
 
     @Inject
-    private SubjectFacadeImpl subjectFacade;
+    private AltSubjectFacadeImpl subjectFacade;
 
     private Subject subject = new Subject();
     private Subject subjectToEdit = new Subject();

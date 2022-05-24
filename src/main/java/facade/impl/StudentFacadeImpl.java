@@ -1,5 +1,6 @@
 package facade.impl;
 
+import interceptor.Logged;
 import model.Speciality;
 import model.Student;
 import model.Subject;
@@ -10,8 +11,9 @@ import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
+@Logged
 @ApplicationScoped
-public class StudentFacadeImpl {
+public class StudentFacadeImpl implements StudentGroup{
     @Inject
     private EntityManager entityManager;
     @Inject

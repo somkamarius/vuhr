@@ -37,7 +37,7 @@ public class GenerateEmail implements Serializable {
                     .toString();
         });
 
-        return "/index.xhtml?faces-redirect=true";
+        return "/index?faces-redirect=true";
     }
 
     public boolean isEmailGenerationRunning() {

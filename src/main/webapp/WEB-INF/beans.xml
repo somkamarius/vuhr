@@ -5,4 +5,16 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
+
+        <interceptors>
+            <class>interceptor.LoggedInterceptor</class>
+        </interceptors>
+
+        <alternatives>
+            <class>facade.impl.AltSubjectFacadeImpl</class>
+        </alternatives>
+
+    <decorators>
+        <class>facade.impl.StudentGroupDecorator</class>
+    </decorators>
 </beans>

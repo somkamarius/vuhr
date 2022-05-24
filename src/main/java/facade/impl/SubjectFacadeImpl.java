@@ -1,5 +1,6 @@
 package facade.impl;
 
+import interceptor.Logged;
 import model.Subject;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@Logged
 @ApplicationScoped
 public class SubjectFacadeImpl {
     @Inject
